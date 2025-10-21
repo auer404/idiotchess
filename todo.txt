@@ -1,7 +1,3 @@
-• gitignore
-
----- > 2.0 complete / API 0.9
-
 • play() : algebraic
 
 • drag/drop support
