@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDIOTCHESS 2.0</title>
+    <script src="chessAPI/chessAPI.js" defer></script>
+    <script src="chessAPI/chessAPI.game.js" defer></script>
+    <script src="chessAPI/chessAPI.board.js" defer></script>
+    <script src="chessAPI/chessAPI.pieces.js" defer></script>
+    <script src="chessAPI/chessAPI.tools.js" defer></script>
+
+    <script src="idiotchess.js" defer></script>
+    <script src="main.js" defer></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <div id="overlay">
+        <div id="menu" class="overlay_inner">
+            <header>
+                <p>Would you like to play a game of</p>
+                <h1>&nbsp;<span>I</span><span>D</span><span>I</span><span>O</span><span>T</span><span>C</span><span>H</span><span>E</span><span>S</span><span>S</span><span class="light">?</span></h1>
+            </header>
+            <button id="PvsCPU_btn">1P <small>vs</small> CPU</button>
+            <button id="CPUvsCPU_btn">CPU <small>vs</small> CPU</button>
+        </div>
+        <div id="message" class="overlay_inner">
+            <header>
+                
+            </header>
+            <button>OK</button>
+        </div>
+         <div id="credits" class="overlay_inner">
+            <header>
+                <h2>Idiotchess <span class="light"><small>v</small>2.0</span></h2>
+                <p>by <a href="https://www.auer404.com" target="_blank">auer404</a> • Github repository <a href="https://github.com/auer404/idiotchess" target="_blank">here</a></p>
+                <br>
+                <p>Press <b>Esc</b> while in game to access the menu.</p>
+                <p>Try not to win. Good luck !</p>
+            </header>
+            <button>OK</button>
+        </div>
+    </div>
+
+    <button id="credits_btn">?</button>
+
+    <div class="board refreshing">
+        <div id="game_status"></div>
+        <div class="promo_options white">
+            <div class = "option queen" data-type="q"></div>
+            <div class = "option bishop" data-type="b"></div>
+            <div class = "option rook" data-type="r"></div>
+            <div class = "option knight" data-type="n"></div>
+        </div>
+        <div class="promo_options black">
+            <div class = "option queen" data-type="q"></div>
+            <div class = "option bishop" data-type="b"></div>
+            <div class = "option rook" data-type="r"></div>
+            <div class = "option knight" data-type="n"></div>
+        </div>
+    </div>
+    
+</body>
+</html>

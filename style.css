@@ -1,0 +1,477 @@
+@font-face {
+    font-family: 'mexcellent';
+    src: url('fonts/mexcellent_3d-webfont.eot');
+    src: url('fonts/mexcellent_3d-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/mexcellent_3d-webfont.woff2') format('woff2'),
+        url('fonts/mexcellent_3d-webfont.woff') format('woff'),
+        url('fonts/mexcellent_3d-webfont.ttf') format('truetype'),
+        url('fonts/mexcellent_3d-webfont.svg#mexcellent3d') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Bebas';
+    src: url('fonts/Bebas-Regular.eot');
+    src: url('fonts/Bebas-Regular.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Bebas-Regular.woff2') format('woff2'),
+        url('fonts/Bebas-Regular.woff') format('woff'),
+        url('fonts/Bebas-Regular.ttf') format('truetype'),
+        url('fonts/Bebas-Regular.svg#Bebas-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'bebas_light';
+    src: url('fonts/bebasneue_light-webfont.eot');
+    src: url('fonts/bebasneue_light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/bebasneue_light-webfont.woff2') format('woff2'),
+         url('fonts/bebasneue_light-webfont.woff') format('woff'),
+         url('fonts/bebasneue_light-webfont.ttf') format('truetype'),
+         url('fonts/bebasneue_light-webfont.svg#bebas_neuelight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+:root {
+    --main_color:#00A6AC;
+    --white:#FFFFFF;
+    --transluscent_white:rgba(255,255,255, 0.95);
+    --black:#000000;
+    --transluscent_black:rgba(0,0,0, 0.85);
+}
+
+body {
+    margin:0;
+    height:100vh;
+    background-color: var(--main_color);
+    user-select: none;
+}
+
+/*** OVERLAY / MENU / MESSAGE ***/
+
+#overlay {
+    position: fixed;
+    width:calc(var(--square_size) * var(--board_files) + 30px);
+    height:calc(var(--square_size) * var(--board_ranks) + 30px);
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    z-index:1;
+    margin-top:100vh;
+    transition:transform 0.5s;
+}
+
+#overlay.shown {
+    margin-top:0;
+}
+
+.overlay_inner {
+ 
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+}
+
+#overlay.shown:hover .overlay_inner.shown , #overlay.shown.force_blur_fx .overlay_inner.shown {
+    display:flex;
+}
+
+.overlay_inner header {
+    background-color:var(--transluscent_white);
+    color:var(--main_color);
+    border-radius:7px;
+    text-align:center;
+    padding:20px 0;
+    width:100%;
+}
+
+.overlay_inner h1 , .overlay_inner h2 {
+    font-family:"mexcellent";
+    font-size:60px;
+    letter-spacing:10px;
+    margin:0;
+    font-weight:normal;
+}
+
+.overlay_inner h1 span:nth-child(even) {
+    animation: 0.1s linear infinite alternate title_color_shift;
+}
+
+.overlay_inner h1 span:nth-child(odd) {
+    animation: 0.1s linear infinite alternate-reverse title_color_shift;
+}
+
+@keyframes title_color_shift {
+    0% {color:var(--main_color);}
+    15% {color:var(--main_color);}
+    85% {color:var(--transluscent_black);}
+    100% {color:var(--transluscent_black);}
+}
+
+.overlay_inner h2 {
+    font-size:40px;
+    letter-spacing:3px;
+}
+
+.overlay_inner h1 .light {
+    font-family:"bebas_light";
+}
+
+.overlay_inner p {
+    font-family:"bebas_light";
+    margin:0;
+    letter-spacing:2px;
+    font-size:20px;
+}
+
+.overlay_inner button {
+    background-color:var(--main_color);
+    color:var(--white);
+    font-family:"bebas";
+    height:40px;
+    font-size:25px;
+    border-radius:5px;
+    width:240px;
+    letter-spacing:2px;
+    margin-top:40px;
+    border:none;
+    outline:none;
+    position:relative;
+    cursor:pointer;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.overlay_inner button::after {
+    content:"";
+    width:100%; height:100%;
+    position:absolute;
+    border-radius:7px;
+    top:-4px; left:-4px;
+    border:2px solid var(--white); padding:2px;
+}
+
+.overlay_inner button small , .overlay_inner h2 .light {
+    font-family:"bebas_light";
+}
+
+.overlay_inner a {
+    color:inherit;
+    text-decoration:none;
+    border-bottom:1px dotted var(--main_color);
+}
+
+.overlay_inner a:hover {
+    color:black;
+    border-bottom-color:black;
+}
+
+.overlay_inner b {
+    font-family:"bebas";
+}
+
+#credits_btn {
+    position:fixed;
+    bottom:10px; right:10px;
+    width:fit-content;
+    padding-left:10px; padding-right:10px;
+     background-color:var(--main_color);
+    color:var(--white);
+    font-family:"bebas";
+    font-size:16px;
+    border-radius:5px;
+    padding:3px 8px 3px 9px;
+    border:none;
+    outline:none;
+    cursor:pointer;
+    transition: color 0.3s, background-color 0.3s, transform 0.5s;
+}
+
+#credits_btn::after {
+    content:"";
+    width:100%; height:100%;
+    position:absolute;
+    border-radius:7px;
+    top:-3px; left:-3px;
+    border:1px solid var(--white); padding:2px;
+}
+
+.overlay_inner button:hover , #credits_btn:hover {
+    background-color:var(--white);
+    color:var(--main_color);
+}
+
+.overlay_inner button:active , #credits_btn:active {
+    background-color:var(--black);
+    color:var(--white);
+}
+
+#overlay.force_blur_fx + #credits_btn {
+    transform:translateY(200%);
+}
+
+/*** BOARD & SQUARES ***/
+
+.board {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width:calc(var(--square_size) * var(--board_files));
+    height:calc(var(--square_size) * var(--board_ranks));
+    transform:translate(-50%,-50%);
+    border: solid 1px var(--white);
+    padding: 2px;
+    background-color: var(--main_color);
+    transition:filter 2s, opacity 0.5s, transform 0.5s;
+}
+
+.board.refreshing {
+    transform:translate(-50%,-50%) scale(0);
+    opacity:0;
+}
+
+#overlay:hover ~ .board , #overlay.force_blur_fx ~ .board {
+    filter:blur(3px);
+    opacity:0.75;
+}
+
+.square {
+    position:absolute;
+    background-color: var(--main_color);
+    font-family: 'mexcellent';
+    font-size: 46px;
+    width:var(--square_size);
+    height:var(--square_size);
+    line-height:var(--square_size);
+    text-align: center;
+    color: var(--white);
+    overflow: hidden;
+    cursor: default;
+}
+
+.square.white {
+    background-color: var(--white);
+    color: var(--main_color);
+}
+
+.square .caption {
+    transition: opacity 3s 0.5s;
+}
+
+/*** PIECES ***/
+
+.piece {
+    position: absolute;
+    width:var(--piece_size);
+    height:var(--piece_size);
+    cursor: pointer;
+    z-index: 100;
+    transition: top var(--piece_move_duration), left var(--piece_move_duration), transform 0.5s;
+}
+
+.piece.moving {
+    z-index: 101;
+}
+
+.piece.moving.castling_rook {
+    z-index: 102;
+}
+
+.piece.unselectable {
+    cursor: default;
+}
+
+.piece:not(.selected):not(.unselectable):hover {
+    background-position: -1px -1px;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+
+.piece.on_black:not(.selected):not(.unselectable):hover {
+    border: 1px dotted var(--white);
+}
+
+.piece.on_white:not(.selected):not(.unselectable):hover {
+    border: 1px dotted var(--main_color);
+}
+
+.piece.selected {
+    margin-left: -5px;
+    margin-top: -5px;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    z-index: 99;
+}
+
+.piece.selected:not(.unselectable):hover {
+    margin-left: -15px;
+    margin-top: -15px;
+    opacity: 0.9;
+}
+
+.piece.on_black.selected {
+    border: 5px solid var(--main_color);
+    background-color: var(--white);
+}
+
+.piece.on_white.selected {
+    border: 5px solid var(--white);
+    background-color: var(--main_color);
+}
+
+.piece.on_black.selected:not(.unselectable):hover {
+    border: 15px solid var(--main_color);
+    background-color: var(--white);
+}
+
+.piece.on_white.selected:not(.unselectable):hover {
+    border: 15px solid var(--white);
+    background-color: var(--main_color);
+}
+
+.piece.dead_king {
+    transform:rotate(90deg);
+}
+
+/*** SPECIAL FX ***/
+
+.ghost_piece {
+    position: absolute;
+    width:var(--piece_size);
+    height:var(--piece_size);
+    border-radius:50%;
+    z-index: 98;
+    transition: opacity 0.5s;
+}
+
+.ghost_piece.fading {
+    opacity:0;
+}
+
+.ghost_piece.dark_bg {
+    background-color:var(--black);
+}
+
+.check_fx {
+    position: absolute;
+    width:calc(var(--piece_size) / 2);
+    height:calc(var(--piece_size) / 2);
+    z-index: 100;
+    background-color: var(--black);
+    color: var(--white);
+    text-align: center;
+    line-height:calc(var(--piece_size) / 2);
+    font-size:calc(var(--piece_size) / 3);
+    border-radius: 50%;
+    transition: opacity 0.5s, margin-top 0.5s;
+}
+
+.check_fx.moving {
+    margin-top:calc(-1 * var(--square_size));
+}
+
+.check_fix.fading {
+    opacity:0;
+}
+
+/*** PROMOTION OPTIONS ***/
+
+.promo_options {
+    position:absolute;
+    left:50%; transform:translateX(-50%);
+    padding:6px;
+    gap:6px;
+    background-color: var(--white);
+    border-radius:35px;
+    opacity: 0.7;
+    display:none;
+}
+
+.promo_options.shown {
+    display:flex;
+}
+
+.pov_black .promo_options.white , .pov_white .promo_options.black {
+    top:100%;
+    margin-top:3px;
+}
+
+.pov_black .promo_options.black , .pov_white .promo_options.white {
+    bottom:100%;
+    margin-bottom:3px;
+}
+
+.option {
+    width: var(--piece_size);
+    height: var(--piece_size);
+    cursor: pointer;
+}
+
+.option:hover , .option.hover {
+    border-radius: 50%;
+    background-color: var(--main_color);
+}
+
+.option.knight {
+    background-image: url(images/white_n.png)
+}
+
+.black .option.knight {
+    background-image: url(images/black_n.png)
+}
+
+.option.bishop {
+    background-image: url(images/white_b.png)
+}
+
+.black .option.bishop {
+    background-image: url(images/black_b.png)
+}
+
+.option.rook {
+    background-image: url(images/white_r.png)
+}
+
+.black .option.rook {
+    background-image: url(images/black_r.png)
+}
+
+.option.queen {
+    background-image: url(images/white_q.png)
+}
+
+.black .option.queen {
+    background-image: url(images/black_q.png)
+}
+
+/*** GAME STATUS DISPLAY ***/
+
+#game_status {
+    pointer-events:none;
+    position:absolute;
+    left:0;
+    bottom:100%;
+    width:100%; text-align:center;
+    margin-bottom:calc(var(--square_size) + 20px);
+    font-family:'bebas_light';
+    font-size:18px;
+    letter-spacing:1px;
+    color:var(--white);
+}
+
+#game_status b {
+    font-family:"bebas";
+}
+
+#game_status b.black {
+    color:var(--black);
+}

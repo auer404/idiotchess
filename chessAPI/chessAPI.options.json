@@ -1,0 +1,212 @@
+{
+    "default_FEN": "default",
+
+    "preset_FEN": {
+        "default": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "nopawns": "rnbqkbnr/8/8/8/8/8/8/RNBQKBNR w KQkq - 0 1",
+        "onlypawns": "8/pppppppp/8/8/8/8/PPPPPPPP/8 w KQkq - 0 1",
+        "horses!": "nNnNnNnN/8/8/8/8/8/8/NnNnNnNn w KQkq - 0 1",
+        "doublepawns": "pppppppp/pppppppp/8/8/8/8/PPPPPPPP/PPPPPPPP w KQkq - 0 1"
+    },
+
+    "board_files": 8,
+    "board_ranks": 8,
+    "pov": "white",
+
+    "auto_draw_after": 50,
+
+    "moveset_rules": {
+        "p": [
+            {
+                "x": 0,
+                "y": -1,
+                "condition": "free",
+                "repeat": 2
+            },
+            {
+                "x": -1,
+                "y": -1,
+                "condition": "occupied"
+            },
+            {
+                "x": 1,
+                "y": -1,
+                "condition": "occupied"
+            }
+        ],
+        "p_opposite": [
+            {
+                "x": 0,
+                "y": 1,
+                "condition": "free",
+                "repeat": 2
+            },
+            {
+                "x": -1,
+                "y": 1,
+                "condition": "occupied"
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "condition": "occupied"
+            }
+        ],
+        "n": [
+            {
+                "x": 1,
+                "y": -2
+            },
+            {
+                "x": 2,
+                "y": -1
+            },
+            {
+                "x": 2,
+                "y": 1
+            },
+            {
+                "x": 1,
+                "y": 2
+            },
+            {
+                "x": -1,
+                "y": 2
+            },
+            {
+                "x": -2,
+                "y": 1
+            },
+            {
+                "x": -2,
+                "y": -1
+            },
+            {
+                "x": -1,
+                "y": -2
+            }
+        ],
+        "b": [
+            {
+                "x": 1,
+                "y": 1,
+                "repeat": true
+            },
+            {
+                "x": 1,
+                "y": -1,
+                "repeat": true
+            },
+            {
+                "x": -1,
+                "y": -1,
+                "repeat": true
+            },
+            {
+                "x": -1,
+                "y": 1,
+                "repeat": true
+            }
+        ],
+        "r": [
+            {
+                "x": 1,
+                "y": 0,
+                "repeat": true
+            },
+            {
+                "x": -1,
+                "y": 0,
+                "repeat": true
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "repeat": true
+            },
+            {
+                "x": 0,
+                "y": -1,
+                "repeat": true
+            }
+        ],
+        "q": [
+            {
+                "x": 1,
+                "y": 0,
+                "repeat": true
+            },
+            {
+                "x": -1,
+                "y": 0,
+                "repeat": true
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "repeat": true
+            },
+            {
+                "x": 0,
+                "y": -1,
+                "repeat": true
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "repeat": true
+            },
+            {
+                "x": 1,
+                "y": -1,
+                "repeat": true
+            },
+            {
+                "x": -1,
+                "y": -1,
+                "repeat": true
+            },
+            {
+                "x": -1,
+                "y": 1,
+                "repeat": true
+            }
+        ],
+        "k": [
+            {
+                "x": 1,
+                "y": 0
+            },
+            {
+                "x": -1,
+                "y": 0
+            },
+            {
+                "x": 0,
+                "y": 1
+            },
+            {
+                "x": 0,
+                "y": -1
+            },
+            {
+                "x": 1,
+                "y": 1
+            },
+            {
+                "x": 1,
+                "y": -1
+            },
+            {
+                "x": -1,
+                "y": -1
+            },
+            {
+                "x": -1,
+                "y": 1
+            }
+        ]
+    },
+
+    "alphabet": "abcdefghijklmnopqrstuvwxyz"
+}

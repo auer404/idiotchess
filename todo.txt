@@ -1,0 +1,37 @@
+• gitignore
+
+---- > 2.0 complete / API 0.9
+
+• play() : algebraic
+
+• drag/drop support
+
+• no interface<-idiotchess dependency
+
+• initial state comparison (for custom FEN) to selected default FEN map (+ legit king / rook /enpassant pos)
+
+• experimental mode : allow 1-color games (no immediate stalemate, no player switch)
+Note : king absence (nearly) allows 1-color
+
+• API.pieces.get_lines_of_sight : refactor ?
+
+• API.pieces.kings_base_restrictions :
+    pawn threat to king : could use get_allowed_moves({shift.from / shift.to})
+        -> get rid of potential_allowed_moves ?
+
+• piece_size / square_size : fix weird adjustment consequences
+• piece_move_duration : adjust other timings accordingly
+
+---- > 2.1 / API 1.0
+
+• history
+    > persistance
+    > replay ?
+
+• hooks -> event handlers
+
+• achievements
+
+• idiotchess : behavior parameters
+
+---- > 2.2 / API 1.1
